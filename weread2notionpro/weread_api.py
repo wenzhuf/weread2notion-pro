@@ -29,6 +29,8 @@ WEREAD_BOOK_INFO = "https://weread.qq.com/web/book/info"
 WEREAD_READDATA_DETAIL = "https://weread.qq.com/web/readdata/detail"
 WEREAD_HISTORY_URL = "https://weread.qq.com/web/readdata/summary?synckey=0"
 
+WEREAD_SHELF_URL = "https://weread.qq.com/web/shelf"
+
 
 class WeReadApi:
     def __init__(self):
@@ -84,7 +86,7 @@ class WeReadApi:
     def get_bookshelf(self):
         self.session.get(WEREAD_URL)
         r = self.session.get(
-            "https://i.weread.qq.com/shelf/sync?synckey=0&teenmode=0&album=1&onlyBookid=0"
+            f"{WEREAD_SHELF_URL}/sync?synckey=0&teenmode=0&album=1&onlyBookid=0"
         )
         if r.ok:
             return r.json()
